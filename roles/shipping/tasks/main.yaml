@@ -1,0 +1,52 @@
+  - name: install packages
+    ansible.builtin.dnf:
+     name: "{{ item }}"
+     state: present
+    loop:
+    - maven
+    - mysql
+
+  - name: installing mysql python libraries
+    ansible.builtin.pip:
+     executable: pip3.9
+     name: "{{ item }}"
+    loop:
+    - cryptography
+    - MyPySQL
+
+  - name: app setup
+    ansible.builtin.import_role:
+     name: common
+     tasks_from: app-setup.yaml
+
+  - name: installing dependencies
+    ansible.builtin.command:
+     mvn clean package
+    args:
+     chdir: /app
+
+  - name: renaming jar file
+    ansible.builtin.command:
+     mv target/shipping-{{ version }}.jar shipping.jar
+    args:
+     chdir: /app
+
+  - name: import shipping data into mysql
+    community.mysql.mysql_db:
+     state: import
+     name: all 
+     login_host: mysql.pavithra.sbs
+     login_user: root
+     login_password: RoboShop@1
+     target: "{{ item }}"
+    loop:
+    - /app/db/schema.sql
+    - /app/db/app-user.sql 
+    - /app/db/master-data.sql
+
+  - name: daemon reload and enabling shipping
+    ansible.builtin.import_role:
+     name: common
+     tasks_from: system-setup.yaml
+
+     

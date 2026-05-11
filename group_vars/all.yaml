@@ -1,0 +1,9 @@
+MONGODB_HOST: mongodb.pavithra.sbs
+CATALOGUE_HOST: catalogue.pavithra.sbs
+CART_HOST: cart.pavithra.sbs
+MYSQL_HOST: mysql.pavithra.sbs
+PAYMENT_HOST: payment.pavithra.sbs
+RABBITMQ_HOST: rabbitmq.pavithra.sbs
+REDIS_HOST: redis.pavithra.sbs
+SHIPPING_HOST: shipping.pavithra.sbs
+USER_HOST: user.pavithra.sbs
