@@ -20,7 +20,7 @@
 
     - name: Print environment variable
       debug:
-       var: environment
+       var: env 
 
     - name: connecting to mongodb catalogue
       ansible.builtin.command: mongosh {{ MONGODB_HOST }} --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
