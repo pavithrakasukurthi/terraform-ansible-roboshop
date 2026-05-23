@@ -18,6 +18,10 @@
         name: mongodb-mongosh
         state: present
 
+    - name: Print environment variable
+      debug:
+       var: environment
+
     - name: connecting to mongodb catalogue
       ansible.builtin.command: mongosh {{ MONGODB_HOST }} --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
       register: catalogue_output
