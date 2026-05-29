@@ -6,4 +6,4 @@ PAYMENT_HOST: payment.backend-alb-{{ env }}.pavithra.sbs
 RABBITMQ_HOST: rabbitmq-{{ env }}.pavithra.sbs
 REDIS_HOST: redis-{{ env }}.pavithra.sbs
 SHIPPING_HOST: shipping.backend-alb-{{ env }}.pavithra.sbs
-USER_HOST: user.backen-alb-{{ env }}.pavithra.sbs
+USER_HOST: user.backend-alb-{{ env }}.pavithra.sbs
